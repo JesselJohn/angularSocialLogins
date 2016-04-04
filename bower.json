@@ -1,27 +1,33 @@
 {
-  "name": "angularSocialLogin",
-  "authors": [
-    "Jessel John <jesseljohn130@gmail.com>"
-  ],
-  "description": "Social Site Logins",
-  "main": [
-    "styles/main.scss",
-    "scripts/social.js"
-  ]
-  "moduleType": [],
-  "keywords": [
-    "social",
-    "facebook",
-    "google",
-    "popup"
-  ],
-  "license": "MIT",
-  "homepage": "",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+    "name": "angularSocialLogin",
+    "version": "0.0.1",
+    "authors": [
+        "Jessel John <jesseljohn130@gmail.com>"
+    ],
+    "description": "Social Site Logins",
+    "main": [
+        "styles/main.scss",
+        "scripts/social.js"
+    ]
+    "moduleType": [],
+    "keywords": [
+        "social",
+        "facebook",
+        "google",
+        "popup"
+    ],
+    "dependencies": {
+        "angular": "^1.5.2",
+        "bootstrap-sass-official": "https://github.com/jesselty/twitter-bootstrap.git",
+        "font-awesome": "https://github.com/jesselty/font-awesome.git"
+    },
+    "license": "MIT",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
 }
