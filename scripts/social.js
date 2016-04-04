@@ -1,38 +1,5 @@
 "use strict";
 
-! function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.async = true;
-    js.src = "https://apis.google.com/js/api:client.js";
-    js.onload = function() {
-        var event = new Event('GOOGLE_API_LOADED');
-        window.dispatchEvent(event);
-    };
-
-    window.addEventListener('load', function() {
-        fjs.parentNode.insertBefore(js, fjs);
-    }, false);
-}(document, 'script', 'google-jssdk');
-
-! function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.async = true;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    window.addEventListener('load', function() {
-        fjs.parentNode.insertBefore(js, fjs);
-    }, false);
-}(document, 'script', 'facebook-jssdk');
-
 ! function(window, angular, undefined) {
     var FACEBOOK = {
             MODULE: 'user.fb',
@@ -80,6 +47,28 @@
             MODULE: 'user.auth',
             DEPENDENCIES: ['ngCookies', POPUP.MODULE, FACEBOOK.MODULE, GOOGLE.MODULE, TEMPLATES.MODULE]
         };
+
+    function loadScriptsAsyncfunction(d, s, id, url, e) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.async = true;
+        js.src = url;
+        js.onload = function() {
+            var event = new Event(e);
+            window.dispatchEvent(event);
+        };
+
+        window.addEventListener('load', function() {
+            fjs.parentNode.insertBefore(js, fjs);
+        }, false);
+    };
+
+    loadScriptsAsyncfunction(document, 'script', 'facebook-jssdk', '//connect.facebook.net/en_US/sdk.js', 'FACEBOOK_API_LOADED');
+    loadScriptsAsyncfunction(document, 'script', 'google-jssdk', 'https://apis.google.com/js/api:client.js', 'GOOGLE_API_LOADED');
 
     angular.module(TEMPLATES.MODULE, TEMPLATES.DEPENDENCIES);
     angular.module(MAIN_MODULE.MODULE, MAIN_MODULE.DEPENDENCIES);
