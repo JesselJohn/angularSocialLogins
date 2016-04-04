@@ -1,3 +1,5 @@
+"use strict";
+
 ! function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
@@ -283,7 +285,7 @@
                         googlefactory.googleAsync(function(obj) {
                             var gapi = obj[0],
                                 auth = obj[1];
-                            auth.attachClickHandler($element[0], {}, googlefactory.onLogin,
+                            auth.attachClickHandler($element[0], {}, angular.noop,
                                 function(error) {
                                     alert(JSON.stringify(error, undefined, 2));
                                 }
