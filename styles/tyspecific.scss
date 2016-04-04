@@ -1,0 +1,173 @@
+.inner-popup {
+    position: relative;
+    .close {
+        position: absolute;
+        top: -20px;
+        right: -30px;
+        font-size: 25px;
+        color: #555;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-family: sans-serif;
+        border: $border-1;
+    }
+}
+
+.ty-auth-wrapper {
+    padding: 10px 0 20px;
+    .ty-form {
+        .ty-input-block,
+        .ty-alignright-block {
+            display: table;
+            width: 100%;
+            padding: 8px 0;
+        }
+        .ty-input-block {
+            .ty-user-label,
+            .ty-user-input {
+                display: table-cell;
+            }
+            .ty-user-label {
+                width: 80px;
+            }
+            .ty-user-input {
+                width: 100%;
+            }
+        }
+        .ty-alignright-block {
+            &:before,
+            .ty-alignright {
+                display: table-cell;
+            }
+            .ty-alignright {
+                display: inline-block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.ty-forgot-password {
+    color: #555;
+    font-size: 12px;
+    cursor: pointer;
+    vertical-align: top;
+    &:hover {
+        color: #005580;
+        text-decoration: underline;
+    }
+}
+
+button.ty-user-button,
+input.ty-user-input {
+    border: 1px solid $ty-color;
+    border-radius: 3px;
+    height: 33px;
+    outline: 0;
+}
+
+input.ty-user-input {
+    padding: 0 5px;
+}
+
+input.ty-user-input:focus {
+    box-shadow: 0 0 8px $ty-color;
+}
+
+button.ty-user-button {
+    background-color: $ty-color;
+    color: white;
+    cursor: pointer;
+}
+
+button.ty-user-button:active {
+    background-color: $ty-color-dark;
+}
+
+.auth-wrapper {
+    height: 100%;
+}
+
+.signin-form {
+    position: relative;
+    width: 100%;
+    height: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 1px solid #BBBABA;
+    margin-bottom: 15px;
+    &:before {
+        content: "OR";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -15px;
+        margin: auto;
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        padding: 4px 0;
+        color: #555;
+        font-size: 14px;
+        text-align: center;
+    }
+    .ty-input-block {
+        @extend .clearfix;
+        display: table;
+    }
+    button.ty-user-button {
+        font-size: 15px;
+    }
+    .ty-forgot-password {
+        padding: 0 0;
+    }
+}
+
+.social-logins {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.ty-auth-wrapper {
+    .forgot-pswd-block {
+        padding: 0 0;
+    }
+}
+
+@media only screen and (min-width: 620px) {
+    .user-popup-wrapper {
+        .popup-content {
+            max-height: 262px;
+        }
+    }
+    .ty-auth-wrapper {
+        .ty-form {
+            .ty-alignright-block {
+                &:before {
+                    content: " ";
+                    width: 80px;
+                }
+            }
+        }
+    }
+    .signin-form {
+        width: 60%;
+        border-bottom: none;
+        border-right: 1px solid #BBBABA;
+        padding-right: 45px;
+        margin-bottom: initial;
+        &:before {
+            right: -13px;
+            top: 0;
+            bottom: 0;
+            left: auto;
+        }
+    }
+    .social-logins {
+        padding-left: 25px;
+        width: 39.285%;
+    }
+}

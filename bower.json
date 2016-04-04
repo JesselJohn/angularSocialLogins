@@ -1,0 +1,27 @@
+{
+  "name": "angularSocialLogin",
+  "authors": [
+    "Jessel John <jesseljohn130@gmail.com>"
+  ],
+  "description": "Social Site Logins",
+  "main": [
+    "styles/main.scss",
+    "scripts/social.js"
+  ]
+  "moduleType": [],
+  "keywords": [
+    "social",
+    "facebook",
+    "google",
+    "popup"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
