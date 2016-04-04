@@ -8,7 +8,7 @@
     "main": [
         "styles/main.scss",
         "scripts/social.js"
-    ]
+    ],
     "moduleType": [],
     "keywords": [
         "social",
