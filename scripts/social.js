@@ -40,7 +40,6 @@
             DIRECTIVE: 'userFb',
             TEMPLATE_URL: 'template/fb.html',
             CONTROLLER_AS: 'fb',
-            SCOPE: 'public_profile,user_photos,email',
             SETTINGS: {
                 isInit: false,
                 isLoggedIn: false
@@ -86,13 +85,16 @@
     angular.module(MAIN_MODULE.MODULE)
         .provider('userauth', [function() {
             var FBsettings = null,
+                FBLoginRtnsettings = null,
                 GoogleSettings = null,
                 userauth = {
                     setFbSettings: setFbSettingsFn,
+                    setFbLoginRtnSettings: setFbLoginRtnSettingsFn,
                     setGoogleSettings: setGoogleSettingsFn,
                     $get: [function() {
                         return {
                             'FBsettings': FBsettings,
+                            'FBLoginRtnsettings': FBLoginRtnsettings,
                             'GoogleSettings': GoogleSettings
                         }
                     }]
@@ -100,6 +102,10 @@
 
             function setFbSettingsFn(obj) {
                 FBsettings = obj;
+            }
+
+            function setFbLoginRtnSettingsFn(obj) {
+                FBLoginRtnsettings = obj;
             }
 
             function setGoogleSettingsFn(obj) {
@@ -168,7 +174,7 @@
 
                     FB.getLoginStatus(function(response) {
                         fb.actOnLoginState(response);
-                    });
+                    }, userauth.FBLoginRtnsettings);
 
                     FB_DEFER.resolve(FB);
                 };
@@ -176,19 +182,21 @@
                 return fb;
             }
         ])
-        .controller(FACEBOOK.CONTROLLER, ['$scope', 'FACEBOOK_CONSTANTS', FACEBOOK.FACTORY, function($scope, FACEBOOK_CONSTANTS, fbfactory) {
-            var that = this;
+        .controller(FACEBOOK.CONTROLLER, ['$scope', 'FACEBOOK_CONSTANTS', FACEBOOK.FACTORY, 'userauth',
+            function($scope, FACEBOOK_CONSTANTS, fbfactory, userauth) {
+                var that = this;
 
-            function FBLoginFn() {
-                FB.login(function(response) {
-                    fbfactory.actOnLoginState(response);
-                }, { scope: FACEBOOK.SCOPE });
+                function FBLoginFn() {
+                    FB.login(function(response) {
+                        fbfactory.actOnLoginState(response);
+                    }, userauth.FBLoginRtnsettings);
+                }
+
+                that.settings = $scope.settings = $scope.settings || FACEBOOK.SETTINGS;
+
+                $scope.FBLogin = FBLoginFn;
             }
-
-            that.settings = $scope.settings = $scope.settings || FACEBOOK.SETTINGS;
-
-            $scope.FBLogin = FBLoginFn;
-        }])
+        ])
         .directive(FACEBOOK.DIRECTIVE, ['FACEBOOK_CONSTANTS',
             function(FACEBOOK_CONSTANTS) {
                 var fb = {
