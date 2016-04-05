@@ -17,7 +17,8 @@
         "popup"
     ],
     "dependencies": {
-        "angular": "^1.5.2",
+        "angular": "^1.4.0",
+        "angular-cookies": "^1.4.0",
         "bootstrap-sass-official": "https://github.com/jesselty/twitter-bootstrap.git",
         "font-awesome": "https://github.com/jesselty/font-awesome.git"
     },
