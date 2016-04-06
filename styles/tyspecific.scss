@@ -1,5 +1,6 @@
 .inner-popup {
     position: relative;
+    height: 100%;
     .close {
         position: absolute;
         top: -20px;
@@ -54,6 +55,7 @@
     font-size: 12px;
     cursor: pointer;
     vertical-align: top;
+    padding: 5px 5px;
     &:hover {
         color: #005580;
         text-decoration: underline;
@@ -86,16 +88,43 @@ button.ty-user-button:active {
     background-color: $ty-color-dark;
 }
 
+.ty-note,
+.ty-back {
+    font-size: 12px;
+}
+
+.ty-back {
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+.note-message {
+    margin-top: 7px;
+}
+
+.forgotpwd-back {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .auth-wrapper {
     height: 100%;
 }
 
-.signin-form {
+.signin-form,
+.forgotpwd-form {
     position: relative;
     width: 100%;
     height: inherit;
     display: inline-block;
     vertical-align: middle;
+}
+
+.signin-form {
     border-bottom: 1px solid #BBBABA;
     margin-bottom: 15px;
     &:before {
@@ -131,7 +160,7 @@ button.ty-user-button:active {
     vertical-align: middle;
 }
 
-.ty-auth-wrapper {
+.auth-wrapper {
     .forgot-pswd-block {
         padding: 0 0;
     }
@@ -143,7 +172,7 @@ button.ty-user-button:active {
             max-height: 262px;
         }
     }
-    .ty-auth-wrapper {
+    .auth-wrapper {
         .ty-form {
             .ty-alignright-block {
                 &:before {
@@ -153,11 +182,14 @@ button.ty-user-button:active {
             }
         }
     }
-    .signin-form {
+    .signin-form,
+    .forgotpwd-form {
         width: 60%;
+        padding-right: 45px;
+    }
+    .signin-form {
         border-bottom: none;
         border-right: 1px solid #BBBABA;
-        padding-right: 45px;
         margin-bottom: initial;
         &:before {
             right: -13px;
@@ -168,6 +200,6 @@ button.ty-user-button:active {
     }
     .social-logins {
         padding-left: 25px;
-        width: 39.285%;
+        width: 39.1%;
     }
 }
