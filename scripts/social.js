@@ -48,6 +48,10 @@
             DEPENDENCIES: ['ngCookies', POPUP.MODULE, FACEBOOK.MODULE, GOOGLE.MODULE, TEMPLATES.MODULE]
         };
 
+    function preventBubbleFn(e){
+        e.stopPropagation();
+    }
+
     function loadScriptsAsyncfunction(d, s, id, url, e) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
@@ -108,6 +112,7 @@
 
     angular.module(POPUP.MODULE, [])
         .controller(POPUP.CONTROLLER, ['$scope', function($scope) {
+            $scope.preventBubble = preventBubbleFn;
             this.settings = $scope.settings = $scope.settings || POPUP.SETTINGS;
         }])
         .directive(POPUP.DIRECTIVE, [function() {
@@ -304,7 +309,7 @@
         $templateCache.put(POPUP.TEMPLATE_URL, "" +
             "<div class='user-popup' ng-show='settings.isOpen'>" +
             "   <div class='user-popup-wrapper'>" +
-            "       <div class='popup-content' ng-transclude></span>" +
+            "       <div class='popup-content' ng-click='preventBubble($event)' ng-transclude></span>" +
             "   </div>" +
             "</div>"
         );
